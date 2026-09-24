@@ -47,18 +47,22 @@ check there is for the maintainer to fix.
 
 ## Conventions (keep the browser editor happy)
 
-- Pages are `.md`, not `.mdx`. `markdown.format: 'detect'` compiles `.md` as plain
-  Markdown, so a typed `<` or `{` can't break the build. JSX components (tabs etc.)
-  need `.mdx`, and the editor can't edit those safely.
+- All pages are compiled as MDX (`markdown.format: 'mdx'`), so components (tabs,
+  `<details>`, `<kbd>`, variables, custom React components) work in any page. A syntax
+  error, such as `{` without `\` or `<` directly before a letter or number, fails the build,
+  and the site keeps the last good version until it is fixed.
+- Custom heading IDs use `{/* #id */}` (MDX), not `{#id}`. Comments are `{/* ... */}`.
+- A paragraph anchor is `<Link id="..." />` (from `@docusaurus/Link`). A plain `<a id>`
+  works in the browser but isn't registered, so the broken-anchor check flags links to it.
 - Every page has a `title:` in front matter and **no** `# H1` in the body.
 - Admonitions: `:::tip` / `:::note` / `:::info` / `:::warning` / `:::danger`, with
   an optional title as `:::tip[Title]`.
-- No raw HTML (`<details>`, `<!-- -->`, ...): the editor drops the tags on save.
+- The browser editors may drop HTML/JSX tags on save, so pages with components are best
+  edited in a code editor.
 - Keep each list item on one line, no backticks inside inline code, and no ```` ``` ```` lines
   inside a code block; the editor mangles all three.
-- `docs/writing-reference.md` shows the syntax that survives the editor (heading IDs,
-  footnotes, titled and nested admonitions, code titles/highlighting, Mermaid). Links can
-  only target headings: paragraph anchors need HTML, which the editor removes.
+- `docs/writing-reference.md` shows the syntax, with a Components section for the MDX-only
+  parts.
 - Front matter keys the editor doesn't show (e.g. `slug`) survive saves because
   `.pages.yml` sets `settings.content.merge: true`.
 - Pull before editing locally, since coworkers commit to `main` from the browser.

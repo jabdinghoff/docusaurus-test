@@ -2,8 +2,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// The deploy build only warns so an edit made in the browser can never stop the site from
-// updating; CI runs a second build with DOCS_STRICT=1 that reports the same problems as errors.
+// Broken links and images only warn in the deploy build, so they never stop the site from
+// updating (MDX syntax errors still do); CI runs a second build with DOCS_STRICT=1 that
+// reports them as errors.
 const severity = process.env.DOCS_STRICT ? 'throw' : 'warn';
 
 const config: Config = {
@@ -22,7 +23,7 @@ const config: Config = {
   onBrokenAnchors: severity,
 
   markdown: {
-    format: 'detect',
+    format: 'mdx',
     mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: severity,
