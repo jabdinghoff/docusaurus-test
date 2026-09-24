@@ -3,6 +3,7 @@ title: Writing reference
 sidebar_position: 90
 description: Syntax that survives the browser editor, with examples.
 ---
+
 Everything on this page survives a save in the browser editor. The grey
 boxes show what to type; the part below each one shows the result.
 
@@ -119,7 +120,7 @@ sh agent.sh --token YOUR_TOKEN
 
 ## Images
 
-![The dashboard after the first login](/img/example.png)
+![The dashboard after the first login](/img/screenshot20260813-34086-109mys.png)
 
 ## Diagrams
 
@@ -134,12 +135,10 @@ flowchart LR
 
 Use the editor's table button, or type one:
 
-
 | Plan | Sensors | Support |
-| ----- | ------- | ------- |
+| --- | --- | --- |
 | Basic | 10 | Email |
 | Pro | 100 | Phone |
-
 
 ## Page settings
 
@@ -156,4 +155,3 @@ sidebar_label: Syntax
 - Task lists (`- [ ]`) lose their checkboxes.
 - Raw HTML is removed, so there are no collapsible sections, keyboard keys or paragraph anchors.
 - Tabs and other components need MDX pages, which the editor can't edit safely.
-
