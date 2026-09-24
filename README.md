@@ -80,8 +80,11 @@ only report; a red check there is for the maintainer to fix.
 - Admonitions: `:::tip` / `:::note` / `:::info` / `:::warning` / `:::danger`, with
   an optional title as `:::tip[Title]`.
 - No raw HTML (`<details>`, `<!-- -->`, ...): the editor drops the tags on save.
-- Keep each list item on one line, and no backticks inside inline code; the editor
-  mangles both.
+- Keep each list item on one line, no backticks inside inline code, and no ```` ``` ```` lines
+  inside a code block; the editor mangles all three.
+- `docs/writing-reference.md` shows the syntax that survives the editor (heading IDs,
+  footnotes, titled and nested admonitions, code titles/highlighting, Mermaid). Links can
+  only target headings: paragraph anchors need HTML, which the editor removes.
 - Front matter keys the editor doesn't show (e.g. `slug`) survive saves because
   `.pages.yml` sets `settings.content.merge: true`.
 - Pull before editing locally, since coworkers commit to `main` from the browser.
