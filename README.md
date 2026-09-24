@@ -13,11 +13,16 @@ There are two ways to edit it, and both end up as commits on `main`:
 ### Trial: Sveltia CMS
 
 A second browser editor, [Sveltia CMS](https://sveltiacms.app), lives at
-`/docusaurus-test/admin/` (`static/admin/`). Its rich-text editor shows `:::note`/`:::tip`/…
-boxes as a "Callout box" component (`static/admin/admonition.js`). Sign in with a GitHub
-personal access token for now; "Sign In with GitHub" needs an OAuth app plus a small auth
-service (e.g. sveltia-cms-auth on Cloudflare Workers) set as `base_url`. Every editor needs
-a GitHub account with write access.
+`/docusaurus-test/admin/` (`static/admin/`). `components.js` registers an editor component
+for each construct used in the docs (admonitions including nested ones, `<details>`,
+`<Tabs>`, `import`/`export const` lines, `<kbd>`, `<Link id>` anchors, `{variables}`), so the
+editor and preview show them and saves write them back unchanged. Every pattern skips
+matches inside code blocks, because Sveltia's preview otherwise substitutes components in
+them. `use_markdown_shortcuts: false` works around a Sveltia bug where multi-line components
+make the shortcuts delete a single character typed before a space at the start of a
+paragraph. Sign in with a GitHub personal access token for now; "Sign In with GitHub" needs
+an OAuth app plus a small auth service (e.g. sveltia-cms-auth on Cloudflare Workers) set as
+`base_url`. Every editor needs a GitHub account with write access.
 
 ## Local workflow
 
