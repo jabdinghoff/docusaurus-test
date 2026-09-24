@@ -17,8 +17,7 @@ A second browser editor, [Sveltia CMS](https://sveltiacms.app), lives at
 boxes as a "Callout box" component (`static/admin/admonition.js`). Sign in with a GitHub
 personal access token for now; "Sign In with GitHub" needs an OAuth app plus a small auth
 service (e.g. sveltia-cms-auth on Cloudflare Workers) set as `base_url`. Every editor needs
-a GitHub account with write access. `tools/editor-format` mirrors Pages CMS, so pages saved
-from Sveltia may fail the `editor-format` check.
+a GitHub account with write access.
 
 ## Local workflow
 
@@ -29,36 +28,11 @@ pnpm build                  # what CI deploys
 DOCS_STRICT=1 pnpm build    # broken links/images as errors
 ```
 
-### Editor format
-
-The Pages CMS editor rewrites a whole page whenever it saves one. `tools/editor-format`
-runs the same conversion as the hosted editor, with the same library versions, so pages
-you write locally are already in the form the editor saves. A browser edit then only
-changes what was actually edited.
-
-```sh
-pnpm --dir tools/editor-format install
-pnpm --dir tools/editor-format format   # rewrite pages; review the diff
-pnpm --dir tools/editor-format check    # what CI runs
-```
-
-A page the editor would mangle a little more on every save is reported and left
-unchanged; rewrite the lines it points at. To run the formatter via `jj fix`
-(repo config, not versioned):
-
-```sh
-jj config set --repo fix.tools.editor-format.command '["node", "tools/editor-format/format.mjs", "--stdin"]'
-jj config set --repo fix.tools.editor-format.patterns '["glob:docs/**/*.md"]'
-```
-
-When Pages CMS updates its editor, bump the versions in `tools/editor-format/package.json`
-and `pnpm-workspace.yaml` to match its `package-lock.json`.
-
 ### CI
 
 `build` + `deploy` publish the site even with broken links or images, so an edit in
-the browser can't stop the site from updating. `strict-build` and `editor-format`
-only report; a red check there is for the maintainer to fix.
+the browser can't stop the site from updating. `strict-build` only reports; a red
+check there is for the maintainer to fix.
 
 ## Layout
 
@@ -69,7 +43,7 @@ only report; a red check there is for the maintainer to fix.
 | `static/img/` | Uploaded images, referenced as `/img/<file>` |
 | `docusaurus.config.ts` | Site config |
 | `.pages.yml` | Pages CMS config |
-| `tools/editor-format/` | Formatter that mirrors the Pages CMS editor |
+| `static/admin/` | Sveltia CMS trial (admin page, config, callout component) |
 
 ## Conventions (keep the browser editor happy)
 
