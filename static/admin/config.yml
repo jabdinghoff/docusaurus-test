@@ -18,8 +18,9 @@ collections:
     nested:
       depth: 5
       subfolders: false
-    # index.md is the home page (it has slug: /) and is edited below.
-    filter: { field: slug, value: null }
+    # index.md is the home page and is edited below. In a filter, `slug` is the entry's file path
+    # inside the folder, not the front matter key.
+    filter: { field: slug, pattern: "^(?!index$)" }
     sortable_fields: [sidebar_position, title]
     fields:
       - { name: title, label: Title, widget: string }
