@@ -18,6 +18,8 @@ collections:
     nested:
       depth: 5
       subfolders: false
+    # Adds the Parent Folder picker and the New Folder button.
+    meta: { path: {} }
     # index.md is the home page and is edited below. In a filter, `slug` is the entry's file path
     # inside the folder, not the front matter key.
     filter: { field: slug, pattern: "^(?!index$)" }
