@@ -50,3 +50,45 @@ content:
         type: rich-text
         options:
           media: images
+
+  # A German page is matched to its English original by file name, so German pages are only
+  # edited here, never created or renamed.
+  - name: pages-de
+    label: Pages (Deutsch)
+    type: collection
+    path: i18n/de/docusaurus-plugin-content-docs/current
+    format: yaml-frontmatter
+    exclude: [index.md]
+    operations: { create: false, rename: false, delete: false }
+    view:
+      primary: title
+      sort: [sidebar_position, title]
+    fields:
+      - name: title
+        label: Titel
+        type: string
+        required: true
+      - name: sidebar_position
+        label: Position im Menü
+        type: number
+      - name: body
+        label: Inhalt
+        type: rich-text
+        options:
+          media: images
+
+  - name: home-de
+    label: Startseite (Deutsch)
+    type: file
+    path: i18n/de/docusaurus-plugin-content-docs/current/index.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: Titel
+        type: string
+        required: true
+      - name: body
+        label: Inhalt
+        type: rich-text
+        options:
+          media: images

@@ -35,7 +35,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'de'],
+    localeConfigs: {
+      en: { label: 'English' },
+      de: { label: 'Deutsch' },
+    },
   },
 
   presets: [
@@ -64,6 +68,7 @@ const config: Config = {
         alt: 'Logo',
         src: 'img/logo.svg',
       },
+      items: [{type: 'localeDropdown', position: 'right'}],
     },
     footer: {
       style: 'dark',

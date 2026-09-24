@@ -29,7 +29,8 @@ an OAuth app plus a small auth service (e.g. sveltia-cms-auth on Cloudflare Work
 ```sh
 pnpm install
 pnpm start                  # live preview on http://localhost:3000/docusaurus-test/
-pnpm build                  # what CI deploys
+pnpm start --locale de      # German preview (the dev server runs one locale at a time)
+pnpm build                  # what CI deploys (all locales)
 DOCS_STRICT=1 pnpm build    # broken links/images as errors
 ```
 
@@ -49,6 +50,18 @@ check there is for the maintainer to fix.
 | `docusaurus.config.ts` | Site config |
 | `.pages.yml` | Pages CMS config |
 | `static/admin/` | Sveltia CMS trial (admin page, config, callout component) |
+| `i18n/de/docusaurus-plugin-content-docs/current/` | German pages, same file names as `docs/` |
+| `i18n/de/*.json` | German UI labels (`pnpm write-translations --locale de`) |
+
+## German translation
+
+The site is built in English (`/`) and German (`/de/`), with a language menu in the navbar.
+A German page is matched to its English original by **file name**. A page without a German
+copy is shown in English, so new pages are created in English first and then copied into
+the German folder. Both browser editors therefore only allow editing German pages, not
+creating, renaming or deleting them. Heading anchors come from the heading text, so links
+in German pages use the German anchors (`#bilder`, not `#images`). Docusaurus doesn't
+notice when an English page changes after its translation.
 
 ## Conventions (keep the browser editor happy)
 

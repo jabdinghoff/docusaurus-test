@@ -54,3 +54,46 @@ collections:
             widget: richtext
             editor_components: [admonition, details, tabs, mdx-import, mdx-export, kbd, anchor, variable, image, code-block]
             use_markdown_shortcuts: false
+
+  # A German page is matched to its English original by file name, so German pages are only
+  # edited here, never created or deleted.
+  - name: pages-de
+    label: Pages (Deutsch)
+    folder: i18n/de/docusaurus-plugin-content-docs/current
+    extension: md
+    format: frontmatter
+    create: false
+    delete: false
+    nested:
+      depth: 5
+      subfolders: false
+    filter: { field: slug, pattern: "^(?!index$)" }
+    sortable_fields: [sidebar_position, title]
+    fields:
+      - { name: title, label: Titel, widget: string }
+      - name: sidebar_position
+        label: Position im Menü
+        widget: number
+        value_type: int
+        required: false
+      - name: body
+        label: Inhalt
+        widget: richtext
+        editor_components: [admonition, details, tabs, mdx-import, mdx-export, kbd, anchor, variable, image, code-block]
+        use_markdown_shortcuts: false
+
+  - name: home-de
+    label: Startseite (Deutsch)
+    files:
+      - name: index
+        label: Startseite
+        file: i18n/de/docusaurus-plugin-content-docs/current/index.md
+        fields:
+          - { name: title, label: Titel, widget: string }
+          - { name: slug, label: Slug, widget: hidden, default: / }
+          - { name: sidebar_position, label: Position im Menü, widget: hidden, default: 1 }
+          - name: body
+            label: Inhalt
+            widget: richtext
+            editor_components: [admonition, details, tabs, mdx-import, mdx-export, kbd, anchor, variable, image, code-block]
+            use_markdown_shortcuts: false
