@@ -1,0 +1,5 @@
+allowBuilds:
+  # Native binary arrives as an optional dependency; postinstall only installs a WASM fallback.
+  "@swc/core@1.16.2": false
+  # Postinstall only prints a funding notice.
+  core-js@3.50.0: false
