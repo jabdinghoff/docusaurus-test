@@ -110,10 +110,20 @@ Code blocks get a copy button automatically. After the language you can
 add a title, highlighted lines and line numbers:
 
 ```text
-language: bash title="install.sh" {2} showLineNumbers
+language: json title="sensor.json" {3} showLineNumbers
 ```
 
-```bash title="install.sh" {2} showLineNumbers
+```json title="sensor.json" {3} showLineNumbers
+{
+  "name": "Warehouse 1",
+  "interval": 60,
+  "alerts": true
+}
+```
+
+Shell commands use the language `bash` (or `powershell`):
+
+```bash
 curl -O https://example.com/agent.sh
 sh agent.sh --token YOUR_TOKEN
 ```
