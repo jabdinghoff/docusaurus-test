@@ -5,10 +5,9 @@ description: Syntax for these docs, with examples.
 ---
 
 The grey boxes show what to type; the part below each one shows the result.
-Pages are MDX: Markdown plus components. Everything above the
-[Components](#components) section survives a save in the browser editor.
+Pages are MDX: Markdown plus components.
 
-## Links {/\* #links \*/}
+## Links
 
 Link to another page with its file name, and to a heading on it with the
 heading in lower case with dashes:
@@ -33,16 +32,18 @@ after a rename, give the heading a fixed ID at the end of the line:
 Then link to it with that ID, from this page or any other:
 [support hours](#support-hours).
 
-#### Support hours {/\* #support-hours \*/}
+:::danger[Not in Sveltia]
 
-Support is available Monday to Friday, 8:00 to 17:00.
-
-:::note
-
-For a link to a single paragraph, see [Components](#components). That needs an
-HTML anchor, which the browser editor may remove.
+Sveltia turns `/*` into `/\*` when it saves, which breaks a fixed ID and stops
+the site from updating. Only add fixed IDs in a code editor. Headings still
+get an automatic ID from their text, so this one is linkable without one.
 
 :::
+
+#### Support hours
+
+Support is available Monday to Friday, 8:00 to 17:00. For a link to a single
+paragraph, see [Components](#components).
 
 ### Footnotes
 
@@ -160,7 +161,7 @@ description: Syntax for these docs, with examples.
 sidebar_label: Syntax
 ```
 
-## Components {/\* #components \*/}
+## Components
 
 These use MDX: HTML-like tags and components inside the page. They are stock
 Docusaurus features, but the browser editor may remove them when it saves,
@@ -249,7 +250,7 @@ updating until it is fixed:
 
 - `{` starts code. Write `\{` for a literal brace.
 - `<` directly followed by a letter or number starts a tag. Write `&lt;` or add a space (`< 10`).
-- Use `{/* comment */}` for comments, not `<!-- -->`.
+- Use `{/* comment */}` for comments, not `<!-- -->`, and only in a code editor: Sveltia breaks them.
 - Task lists (`- [ ]`) lose their checkboxes in the browser editor. 
 
 ## My Edit
