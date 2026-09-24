@@ -3,8 +3,8 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.docs.category.Geräte": {
+  "sidebar.docs.category.Devices": {
     "message": "Geräte",
-    "description": "The label for category 'Geräte' in sidebar 'docs'"
+    "description": "The label for category 'Devices' in sidebar 'docs'"
   }
 }

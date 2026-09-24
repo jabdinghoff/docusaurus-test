@@ -1,8 +1,8 @@
 ---
-title: Neue Seite
+title: New Page
 sidebar_position: 3
 ---
-## Das ist eine Neue Seite
+## This is a new page
 
 
 
