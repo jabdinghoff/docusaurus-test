@@ -35,7 +35,7 @@ to a section, add the heading in lower case with dashes, e.g.
 Use `/` → **Image** in the editor, or upload files under **Images** in the
 sidebar first and pick them from there.
 
-![Example image](/img/example.png)
+![](/img/logo.svg)
 
 ## Things to avoid
 
