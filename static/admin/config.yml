@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.220.0/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: jabdinghoff/docusaurus-test
+  branch: main
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: pages
+    label: Pages
+    folder: docs
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{title}}"
+    nested:
+      depth: 5
+      subfolders: false
+    # index.md is the home page (it has slug: /) and is edited below.
+    filter: { field: slug, value: null }
+    sortable_fields: [sidebar_position, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - name: sidebar_position
+        label: Position in menu
+        widget: number
+        value_type: int
+        required: false
+      - name: body
+        label: Content
+        widget: richtext
+        editor_components: [admonition, image, code-block]
+
+  - name: home
+    label: Home page
+    files:
+      - name: index
+        label: Home page
+        file: docs/index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: slug, label: Slug, widget: hidden, default: / }
+          - { name: sidebar_position, label: Position in menu, widget: hidden, default: 1 }
+          - name: body
+            label: Content
+            widget: richtext
+            editor_components: [admonition, image, code-block]

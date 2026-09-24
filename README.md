@@ -10,6 +10,16 @@ There are two ways to edit it, and both end up as commits on `main`:
   email. See `docs/editing-these-docs.md` for the guide aimed at them.
 - **Locally:** edit the Markdown under `docs/` in any editor.
 
+### Trial: Sveltia CMS
+
+A second browser editor, [Sveltia CMS](https://sveltiacms.app), lives at
+`/docusaurus-test/admin/` (`static/admin/`). Its rich-text editor shows `:::note`/`:::tip`/…
+boxes as a "Callout box" component (`static/admin/admonition.js`). Sign in with a GitHub
+personal access token for now; "Sign In with GitHub" needs an OAuth app plus a small auth
+service (e.g. sveltia-cms-auth on Cloudflare Workers) set as `base_url`. Every editor needs
+a GitHub account with write access. `tools/editor-format` mirrors Pages CMS, so pages saved
+from Sveltia may fail the `editor-format` check.
+
 ## Local workflow
 
 ```sh
